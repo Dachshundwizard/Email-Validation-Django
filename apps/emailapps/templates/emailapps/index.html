@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'emailapps/css/styles.css' %}">
+        <title>Email Validations</title>
+    </head>
+    <body>
+        <main>
+                <h3>Enter your email:</h3>
+                {% for errors in request.session.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+                <form action="/emails" method="post">
+            {% csrf_token %}
+            <h1>Email Address: <input type="text" name="email"></h1>
+            <p><input type="submit" value="Submit"></p>
+        </form>
+        </main>
+    </body>
+</html>
